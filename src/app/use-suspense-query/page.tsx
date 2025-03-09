@@ -3,9 +3,12 @@ import React, { Suspense } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
 
-// 데이터를 호출하는 함수
 function fetchProducts() {
   return fetch('https://fakestoreapi.com/products').then(res => res.json());
+}
+
+function fetchUsers() {
+  return fetch('https://fakestoreapi.com/users').then(res => res.json());
 }
 
 // 에러 발생 시 보여줄 컴포넌트
@@ -14,20 +17,36 @@ function ErrorFallback({ error }) {
 }
 
 function ProductsSuspense() {
-  const { data } = useSuspenseQuery({
+  const { data: productsData } = useSuspenseQuery({
     queryKey: ['products'],
     queryFn: fetchProducts,
   });
+  const { data: usersData } = useSuspenseQuery({
+    queryKey: ['users'],
+    queryFn: fetchUsers,
+  });
 
   return (
-    <div>
-      <h3>상품 목록 (useSuspenseQuery)</h3>
-      <div className="gap-4 flex flex-col">
-        {data.map((product) => (
-          <div key={product.id} className="border border-green-400">
-            <strong>{product.title}</strong>
-          </div>
-        ))}
+    <div className="flex">
+      <div className="flex-1">
+        <h3>상품 목록 (useSuspenseQuery)</h3>
+        <div className="gap-4 flex flex-col">
+          {productsData.map((product) => (
+            <div key={product.id} className="border border-green-400">
+              <strong>{product.title}</strong>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex-1">
+        <h3>유저 목록 (useSuspenseQuery)</h3>
+        <div className="gap-4 flex flex-col">
+          {usersData.map((users) => (
+            <div key={users.id} className="border border-green-400">
+              <strong>{users.username}</strong>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
