@@ -1,5 +1,5 @@
 'use client';
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
 import getQueryClient from '@/app/queryclient';
@@ -60,8 +60,11 @@ function Users() {
 
 function Page() {
   const queryClient = getQueryClient();
-  queryClient.prefetchQuery({ queryKey: ['products'], queryFn: fetchProducts });
-  queryClient.prefetchQuery({ queryKey: ['users'], queryFn: fetchUsers });
+
+  useEffect(() => {
+    queryClient.prefetchQuery({ queryKey: ['products'], queryFn: fetchProducts });
+    queryClient.prefetchQuery({ queryKey: ['users'], queryFn: fetchUsers });
+  }, [queryClient]);
 
   return (
     <div className="flex">
