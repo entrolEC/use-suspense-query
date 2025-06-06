@@ -2,14 +2,12 @@
 import React, { Suspense } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
-import { delay } from '@/utils';
 
 function fetchProducts() {
   return fetch('https://fakestoreapi.com/products').then((res) => res.json());
 }
 
-async function fetchUsers() {
-  await delay(2000);
+function fetchUsers() {
   return fetch('https://fakestoreapi.com/users').then((res) => res.json());
 }
 
