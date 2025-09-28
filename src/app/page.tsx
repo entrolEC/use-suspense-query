@@ -13,7 +13,7 @@ export default function Home() {
     <div className="w-full">
       <ol className="list-disc ml-10 space-y-1 text-2xl">
         <li className="underline"><Link href="/use-query">useQuery로 구현 </Link></li>
-        <li className="underline"><Link href="/use-suspense-query/caution">useSuspenseQuery로 구현 + 문제점 </Link></li>
+        <li className="underline"><Link href="/use-suspense-query">useSuspenseQuery로 구현 + 문제점 </Link></li>
         <li className="underline"><Link href="/use-suspense-query/solutions/1">해결 방법 #1</Link></li>
         <li className="underline"><Link href="/use-suspense-query/solutions/2">해결 방법 #2</Link></li>
         <li className="underline"><Link href="/use-suspense-query/solutions/3">해결 방법 #3</Link></li>
