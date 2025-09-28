@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { ReactQueryClientProvider } from '@/app/react-query-client-provider';
+import Link from 'next/link';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,8 +29,12 @@ export default function RootLayout({
     <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
+
     <ReactQueryClientProvider>
-      {children}
+      <div className="flex flex-col p-4 gap-4">
+        <Link href="/" className="bg-amber-300 hover:opcity-60 rounded-lg font-medium p-2 text-center">메인으로 이동</Link>
+        {children}
+      </div>
     </ReactQueryClientProvider>
     </body>
     </html>
