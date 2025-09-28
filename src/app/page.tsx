@@ -10,7 +10,11 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full p-4">
+      <div><span className="font-bold">사용 방법:</span> 개발자 도구(f12)에서 network탭을 열고 아래의 각 예제 페이지로 진입하여
+        네트워크 요청 흐름을 확인합니다.
+        <br />다시 뒤로 돌아와서 <span className="text-blue-400">캐시 초기화</span> 버튼을 누르고 다른 예제를 확인합니다.
+      </div>
       <ol className="list-disc ml-10 space-y-1 text-2xl">
         <li className="underline"><Link href="/use-query">useQuery로 구현 </Link></li>
         <li className="underline"><Link href="/use-suspense-query">useSuspenseQuery로 구현 + 문제점 </Link></li>
